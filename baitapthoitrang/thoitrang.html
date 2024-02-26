@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thời trang</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .component-container {
+        padding: 20px;
+        border: 1px solid #740707;
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+      }
+      .image-container {
+        margin-bottom: 10px;
+      }
+      .details-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      img {
+        width: 190px;
+        padding-left: 30px;
+      }
+      .buy {
+        margin-top: 10px;
+        background-color: rgb(4, 49, 22);
+        color: white;
+        padding: 7px;
+        border: 0px solid black;
+      }
+      .price {
+        padding-left: 20px;
+        text-decoration: line-through;
+      }
+      .name {
+        font-weight: 900;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #bb9cb1;
+        color: rgb(239, 239, 239);
+        padding: 10px;
+      }
+
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-right: 20px;
+      }
+
+      nav ul li:last-child {
+        margin-right: 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: rgb(87, 86, 86);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href=""
+          ><img
+            src="https://i.pinimg.com/564x/68/c6/c7/68c6c78c3c4189a572db388078e0e72d.jpg"
+            width="10px"
+            height="90"
+            alt=""
+        /></a>
+      </div>
+      <ul>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="#">Thời trang nam</a></li>
+        <li><a href="#">Thời trang nữ</a></li>
+        <li><a href="#">Tin tức</a></li>
+      </ul>z
+      <div class="search-box">
+        <input type="text" placeholder="Tìm kiếm..." />
+        <button>Tìm kiếm</button>
+      </div>
+    </nav>
+    <div id="product" style="display: flex"></div>
+    <script>
+      function createComponent(data) {
+        const container = document.createElement("div");
+        container.classList.add("component-container");
+
+        const imageContainer = document.createElement("div");
+        imageContainer.classList.add("image-container");
+
+        const image = document.createElement("img");
+        image.src = data.image;
+
+        const name = document.createElement("div");
+        name.classList.add("name");
+        name.textContent = data.name;
+
+        const discount = document.createElement("div");
+        discount.classList.add("discount");
+        discount.textContent = data.discount;
+
+        const price = document.createElement("div");
+        price.classList.add("price");
+        price.textContent = data.price;
+
+        const buy = document.createElement("button");
+        buy.classList.add("buy");
+        buy.textContent = "Đặt Mua";
+
+        const detailsContainer = document.createElement("div");
+        detailsContainer.classList.add("details-container");
+        detailsContainer.appendChild(discount);
+        detailsContainer.appendChild(price);
+
+        imageContainer.appendChild(image);
+
+        container.appendChild(imageContainer);
+        container.appendChild(name);
+        container.appendChild(detailsContainer);
+        container.appendChild(buy);
+
+        return container;
+      }
+
+      const appElement = document.getElementById("product");
+      const women = [
+        {
+          image:
+            "https://i.pinimg.com/564x/91/4d/1e/914d1e6b8a499a6985da74d0c60ff890.jpg",
+          name: "Áo sơ mi croptop nữ",
+          discount: "269.000 vnđ",
+          price: "370.000 vnđ",
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/f3/37/b6/f337b6afb891f06295384b3b4e88a7d5.jpg",
+          name: "Áo khoác nữ-VN0002",
+          discount: "249.000 vnđ",
+          price: "369.000 vnđ",
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/80/11/ce/8011ce6597163125ef1589f6fad5df4e.jpg",
+          name: "Áo Kiểu len nữ",
+          discount: "169.000 vnđ",
+          price: "390.000 vnđ",
+        },
+        {
+          image:
+            "https://i.pinimg.com/736x/26/c8/cf/26c8cfadd5328ef0220d08d7d9a65ee2.jpg",
+          name: "Áo Kiểu Sơ mi nữ",
+          discount: "169.000 vnđ",
+          price: "390.000 vnđ",
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/4f/b5/a0/4fb5a06fe8ea6d6ee86930b128a5f382.jpg",
+          name: "Áo Kiểu Croptop nữ",
+          discount: "169.000 vnđ",
+          price: "390.000 vnđ",
+        },
+      ];
+      const men = [
+        {
+          image:
+            "https://i.pinimg.com/564x/ee/f4/1b/eef41b150cb4939d3fe390744f2342de.jpg",
+          name: "Áo Sơ mi nam",
+          discount: "269.000 vnđ",
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/02/1f/60/021f60e051020be73d10ebcfb737ca3c.jpg",
+          name: "Quần baggy đen sang trọng QQ",
+          discount: "249.000 vnđ",
+        },
+        {
+          image:
+            "https://i.pinimg.com/736x/74/cd/0e/74cd0eccdbe04fafd4c3d8ea752ade93.jpg",
+          name: "Set đồ tối giản cho Nam",
+          discount: "169.000 vnđ",
+        },
+      ];
+
+      function updateProductList(products) {
+        appElement.innerHTML = "";
+        for (const item of products) {
+          const product = createComponent(item);
+          appElement.appendChild(product);
+        }
+      }
+      const navItems = document.querySelectorAll("nav ul li a");
+      navItems.forEach((item) => {
+        item.addEventListener("click", function (event) {
+          event.preventDefault();
+          navItems.forEach((navItem) => {
+            navItem.classList.remove("active");
+          });
+          this.classList.add("active");
+          if (this.textContent === "Thời trang nam") {
+            updateProductList(men);
+          } else if (this.textContent === "Thời trang nữ") {
+            updateProductList(women);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
